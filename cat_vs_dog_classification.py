@@ -1,7 +1,14 @@
 import streamlit as st
 from fastai.vision.all import *
+import pathlib
+import platform
 
 # streamlit is a web application to easily do a rapid prototyping
+if platform.system() == "Windows":
+    pathlib.PosixPath = pathlib.WindowsPath
+else:
+    pathlib.WindowsPath = pathlib.PosixPath
+
 
 # labeling mechanism / function
 def cat_or_dog(file_name):
